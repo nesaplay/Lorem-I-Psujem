@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: "Lorem I Psujem",
     author: "Nenad Radovanovic",
-    description: "Kao lorem ipsum... ali masnije. - Lorem I Psujem"
+    description: "Kao lorem ipsum... ali masnije."
   },
   plugins: [
     'gatsby-plugin-react-helmet',

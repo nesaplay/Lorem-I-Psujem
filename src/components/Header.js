@@ -1,4 +1,16 @@
 import React from 'react'
+import { StaticQuery, graphql } from "gatsby"
+
+const GET_METADATA = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
+  }
+`
 
 class Header extends React.Component {
   smoothScroll = () => {
@@ -12,26 +24,31 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <section id="header">
-        <div className="inner">
-          <span className="icon major fa-paperclip" />
-          <h1>
-            <strong>LOREM I PSUJEM</strong>
-            <br />
-          </h1>
-          <p>
-            Generator koji ste svi trazili!
-            <br />
-          </p>
-          <ul className="actions">
-            <li>
-              <span onClick={this.smoothScroll} className="button scrolly">
-                Opsuj
-              </span>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <StaticQuery
+        query={GET_METADATA}
+        render={data => (
+          <section id="header">
+            <div className="inner">
+              <span className="icon major fa-paperclip" />
+              <h1>
+                <strong>{data.site.siteMetadata.title}</strong>
+                <br />
+              </h1>
+              <p>
+                {data.site.siteMetadata.description}
+                <br />
+              </p>
+              <ul className="actions">
+                <li>
+                  <span onClick={this.smoothScroll} className="button scrolly">
+                    Opsuj
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </section>
+        )}
+      />
     )
   }
 }
