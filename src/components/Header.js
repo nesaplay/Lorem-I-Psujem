@@ -1,6 +1,15 @@
 import React from 'react'
 
 class Header extends React.Component {
+  smoothScroll = () => {
+    const sectionOne = document.getElementById("one")
+
+    window.scrollTo({
+      top: sectionOne.offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    })
+  }
   render() {
     return (
       <section id="header">
@@ -16,9 +25,9 @@ class Header extends React.Component {
           </p>
           <ul className="actions">
             <li>
-              <a href="#one" className="button scrolly">
+              <span onClick={this.smoothScroll} className="button scrolly">
                 Opsuj
-              </a>
+              </span>
             </li>
           </ul>
         </div>
